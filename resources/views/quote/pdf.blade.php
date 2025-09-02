@@ -6,33 +6,33 @@
     <title>Cotización #{{ $quote->id }}</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            font-size: 12px;
-            margin: 0;
-            padding: 20px;
-            color: #000;
-        }
+             font-family: Arial, sans-serif;
+             font-size: 10px;
+             margin: 0;
+             padding: 15px;
+             color: #000;
+         }
         
         .header {
-            text-align: center;
-            font-weight: bold;
-            font-size: 14px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
+             text-align: center;
+             font-weight: bold;
+             font-size: 12px;
+             margin-bottom: 15px;
+             text-transform: uppercase;
+         }
         
         table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 10px;
-        }
+             width: 100%;
+             border-collapse: collapse;
+             margin-bottom: 8px;
+         }
         
         td, th {
-            border: 1px solid #000;
-            padding: 8px;
-            text-align: left;
-            vertical-align: top;
-        }
+             border: 1px solid #000;
+             padding: 4px;
+             text-align: left;
+             vertical-align: top;
+         }
         
         .label {
             background-color: #f0f0f0;
@@ -63,10 +63,10 @@
         }
         
         .totals-table {
-            width: 50%;
-            margin-left: auto;
-            margin-top: 20px;
-        }
+             width: 50%;
+             margin-left: auto;
+             margin-top: 10px;
+         }
         
         .totals-table .label {
             width: 60%;
@@ -79,8 +79,8 @@
         }
         
         .signature-section {
-            margin-top: 30px;
-        }
+             margin-top: 15px;
+         }
         
         .signature-table {
             width: 100%;
@@ -99,8 +99,9 @@
         }
         
         .observations {
-            margin-top: 15px;
-        }
+             margin-top: 8px;
+             margin-bottom: 8px;
+         }
     </style>
 </head>
 <body>
@@ -131,11 +132,11 @@
             <td class="full-width" colspan="3">{{ strtoupper($quote->name) }}</td>
         </tr>
         <tr>
-            <td class="label">NIT/CC:</td>
-            <td class="value">{{ $quote->phone ?? 'N/A' }}</td>
-            <td class="label">DIRECCIÓN:</td>
-            <td class="value">{{ $quote->company ?? 'N/A' }}</td>
-        </tr>
+             <td class="label">NIT/CC:</td>
+             <td class="value">{{ $quote->document ?? 'N/A' }}</td>
+             <td class="label">DIRECCIÓN:</td>
+             <td class="value">{{ $quote->company ?? 'N/A' }}</td>
+         </tr>
         <tr>
             <td class="label">TELÉFONO:</td>
             <td class="value">{{ $quote->phone ?? 'N/A' }}</td>
@@ -188,19 +189,19 @@ Nivel SEO: {{ $quote->seo_level_name }}<br>
 @if($quote->multilanguage)✓ Sitio multi-idioma<br>@endif
 </td>
                 <td class="center">1</td>
-                <td class="right">${{ number_format($quote->total_price, 0, ',', '.') }}</td>
-                <td class="right">${{ number_format($quote->total_price, 0, ',', '.') }}</td>
+                <td class="right">${{ number_format($quote->total_price / 1.19, 0, ',', '.') }}</td>
+                <td class="right">${{ number_format($quote->total_price / 1.19, 0, ',', '.') }}</td>
             </tr>
             <!-- Filas vacías para completar el formato -->
-            @for($i = 0; $i < 8; $i++)
-            <tr>
-                <td class="center"></td>
-                <td></td>
-                <td class="center"></td>
-                <td class="right"></td>
-                <td class="right"></td>
-            </tr>
-            @endfor
+             @for($i = 0; $i < 3; $i++)
+             <tr>
+                 <td class="center"></td>
+                 <td></td>
+                 <td class="center"></td>
+                 <td class="right"></td>
+                 <td class="right"></td>
+             </tr>
+             @endfor
         </tbody>
     </table>
     
@@ -211,23 +212,23 @@ Nivel SEO: {{ $quote->seo_level_name }}<br>
     @endif
     
     <!-- Sección de presupuesto compartido -->
-    <table style="margin-top: 20px;">
-        <tr>
-            <td class="label">PRESUPUESTO COMPARTIDO:</td>
-            <td class="full-width" colspan="3"></td>
-        </tr>
-    </table>
+     <table style="margin-top: 8px;">
+         <tr>
+             <td class="label">PRESUPUESTO COMPARTIDO:</td>
+             <td class="full-width" colspan="3"></td>
+         </tr>
+     </table>
     
     <!-- Tabla de totales -->
     <table class="totals-table">
         <tr>
-            <td class="label">SUB TOTAL</td>
-            <td class="value">${{ number_format($quote->total_price * 0.84, 0, ',', '.') }}</td>
-        </tr>
-        <tr>
-            <td class="label">IVA (19%)</td>
-            <td class="value">${{ number_format($quote->total_price * 0.16, 0, ',', '.') }}</td>
-        </tr>
+             <td class="label">SUB TOTAL</td>
+             <td class="value">${{ number_format($quote->total_price / 1.19, 0, ',', '.') }}</td>
+         </tr>
+         <tr>
+             <td class="label">IVA (19%)</td>
+             <td class="value">${{ number_format(($quote->total_price / 1.19) * 0.19, 0, ',', '.') }}</td>
+         </tr>
         <tr>
             <td class="label">Sin Imp. Consumo</td>
             <td class="value">$0</td>

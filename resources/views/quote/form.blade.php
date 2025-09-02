@@ -23,6 +23,13 @@
         
         <div class="form-row">
             <div class="form-group">
+                <label for="document">Cédula o NIT *</label>
+                <input type="text" id="document" name="document" class="form-control" required placeholder="Ej: 12345678 o 900123456-1">
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
                 <label for="phone">Teléfono</label>
                 <input type="tel" id="phone" name="phone" class="form-control">
             </div>

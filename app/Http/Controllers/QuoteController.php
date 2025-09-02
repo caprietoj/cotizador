@@ -31,6 +31,7 @@ class QuoteController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
+            'document' => 'required|string|max:20',
             'phone' => 'nullable|string|max:20',
             'company' => 'nullable|string|max:255',
             'website_type' => 'required|in:landing,corporate,ecommerce,blog,portfolio,custom',
